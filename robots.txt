@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /bio.html
+Sitemap: https://elpeecontabilidade.com.br/sitemap.xml
