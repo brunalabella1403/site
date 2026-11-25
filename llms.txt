@@ -19,11 +19,21 @@
 - [Reforma tributária](https://elpeecontabilidade.com.br/nichos/reforma-tributaria.html)
 - [Terceiro setor](https://elpeecontabilidade.com.br/nichos/terceiro-setor.html)
 - [Imobiliária e corretor de imóveis](https://elpeecontabilidade.com.br/nichos/imobiliaria-corretor.html)
+- [Turismo, hospedagem e agência de viagens](https://elpeecontabilidade.com.br/nichos/turismo.html)
+- [Produção audiovisual, cinema e televisão](https://elpeecontabilidade.com.br/nichos/audiovisual.html)
+- [Tecnologia da informação, software e suporte](https://elpeecontabilidade.com.br/nichos/tecnologia-da-informacao.html)
+
+## Guias
+- [Abrir empresa sem se perder no caminho](https://elpeecontabilidade.com.br/abrir-empresa.html)
+- [MEI: o que muda em 2027, e o que vale hoje](https://elpeecontabilidade.com.br/mei.html)
+- [ME e Simples Nacional: quando a empresa já anda sozinha](https://elpeecontabilidade.com.br/me-simples.html)
+- [Sair do MEI: como e quando](https://elpeecontabilidade.com.br/mei-para-me.html)
+- [Contabilidade mensal: o que a gente faz todo mês](https://elpeecontabilidade.com.br/contabilidade-mensal.html)
 
 ## Calculadoras
-- [Quanto custa registrar quem trabalha na sua casa — Elpee Contabilidade](https://elpeecontabilidade.com.br/calculadoras/domestica.html)
-- [Fator R: em qual anexo a sua empresa cai](https://elpeecontabilidade.com.br/calculadoras/fator-r.html)
-- [Teto do MEI: onde você está no limite do ano](https://elpeecontabilidade.com.br/calculadoras/teto-mei.html)
+- [Custo de registrar a doméstica — Elpee Contabilidade](https://elpeecontabilidade.com.br/calculadoras/domestica.html)
+- [Fator R: em qual anexo você cai — Elpee Contabilidade](https://elpeecontabilidade.com.br/calculadoras/fator-r.html)
+- [Teto do MEI: onde você está — Elpee Contabilidade](https://elpeecontabilidade.com.br/calculadoras/teto-mei.html)
 
 ## Formulários
 - [Formulários](https://elpeecontabilidade.com.br/formularios.html)

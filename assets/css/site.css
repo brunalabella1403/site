@@ -191,7 +191,7 @@ header.topo nav a{white-space:nowrap}
 /* 2026-11-12: guias, campos pendentes, painel, trocador de logo */
 .guias{background:var(--gelo);padding:84px 0}
 .guias h2{font-weight:800;font-size:var(--t4);line-height:1.1;color:var(--marinho);letter-spacing:-.015em;margin-bottom:32px}
-.guias .cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.guias .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
 .guia{display:block;background:#fff;border-top:6px solid var(--ouro);border-radius:0 0 14px 14px;padding:24px;text-decoration:none;color:var(--texto)}
 .guia strong{display:block;font-size:1.3rem;line-height:1.2;color:var(--marinho);margin-bottom:10px}
 .guia span{font-family:var(--serif);font-size:1.05rem;line-height:1.5;color:var(--suave)}
