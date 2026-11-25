@@ -45,7 +45,7 @@
 </div>
 <main id="conteudo">
 <section class="pagina"><div class="wrap form-grid" id="formulario">
-  <form id="form-contato" class="form" novalidate>
+  <form id="form-contato" class="form" method="post" novalidate>
     <div class="campo"><label for="nome">Seu nome</label><input id="nome" name="nome" type="text" autocomplete="name" required><p class="erro-campo">Escreva o seu nome.</p></div>
     <div class="duas">
       <div class="campo"><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" required><p class="erro-campo">Escreva um e-mail válido.</p></div>
@@ -53,14 +53,14 @@
     </div>
     <div class="duas">
       <div class="campo"><label for="atividade">Sua atividade</label><select id="atividade" name="atividade"><option value="">Escolha a sua atividade</option><option>psicóloga</option><option>médico</option><option>dentista</option><option>fisioterapeuta</option><option>nutricionista</option><option>dona de agência</option><option>programador</option><option>consultora</option><option>arquiteta</option><option>advogado</option><option>corretor de imóveis</option><option>dona de loja virtual</option><option>outra atividade</option></select></div>
-      <div class="campo"><label for="objetivo">O que você quer</label><select id="objetivo" name="objetivo"><option value="">Escolha o que você quer</option><option>abrir minha empresa</option><option>sair do MEI</option><option>entender meus impostos</option><option>contratar um funcionário</option><option>trocar de contador</option></select></div>
+      <div class="campo"><label for="objetivo">O que você quer</label><select id="objetivo" name="objetivo"><option value="">Escolha o que você quer</option><option>abrir minha empresa</option><option>sair do MEI</option><option>alterar a minha empresa</option><option>encerrar a minha empresa</option><option>entender meus impostos</option><option>ter a contabilidade mensal em dia</option><option>contratar um funcionário</option><option>trocar de contador</option></select></div>
     </div>
     <div class="campo"><label for="mensagem">Conte a sua situação</label><textarea id="mensagem" name="mensagem" required></textarea><p class="erro-campo">Conte em poucas palavras o que você precisa.</p></div>
     <div class="campo"><label class="aceite"><input type="checkbox" name="aceite" required><span>Li a <a href="privacidade.html">Política de privacidade</a> e autorizo a Elpee a usar estes dados para responder a esta mensagem.</span></label><p class="erro-campo">Marque para podermos responder.</p></div>
     <div class="hp" aria-hidden="true"><label>Não preencha<input type="text" name="empresa_site" tabindex="-1" autocomplete="off"></label></div>
-    <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content"><input type="hidden" name="utm_term"><input type="hidden" name="pagina_origem">
+    <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content"><input type="hidden" name="utm_term"><input type="hidden" name="pagina_origem"><input type="hidden" name="pagina_entrada"><input type="hidden" name="origem">
     <p class="prazo"><b>Respondemos em até 1 dia útil.</b> Contar a sua situação aqui não contrata nada.</p><button class="btn btn-ouro" type="submit">Enviar mensagem</button>
-    <p id="form-status" role="status" aria-live="polite"></p>
+    <noscript><p class="prazo">Para enviar por aqui é preciso ativar o JavaScript. Se preferir, escreva para <a href="mailto:contato@elpee.com.br">contato@elpee.com.br</a>: chega no mesmo lugar.</p></noscript><p id="form-status" role="status" aria-live="polite"></p>
   </form>
   <aside class="lado"><h2>Prefere escrever direto?</h2>
     <p><a href="mailto:contato@elpee.com.br">contato@elpee.com.br</a></p>
@@ -69,7 +69,7 @@
 </main>
 <footer class="rodape"><div class="wrap">
   <div><img src="assets/img/logo-claro.svg" width="115" height="52" alt="Elpee Contabilidade"><br>Elpee Contabilidade Ltda — CNPJ 62.410.081/0001-55<br><a href="mailto:contato@elpee.com.br">contato@elpee.com.br</a>
-    <div class="crc">Contadoras responsáveis:<br>Bruna Aparecida Labella Ramos — CRC 1SP329599/O-0<br>Maria Lucineide Rodrigues Paulo — CRC 1SP314783/O-5<br>Organização contábil: CRC 2SP054047/O-4</div></div>
+    <div class="crc">Contadoras responsáveis:<br>Bruna Labella — CRC 1SP329599/O-0<br>Maria Paulo — CRC 1SP314783/O-5<br>Organização contábil: CRC 2SP054047/O-4</div></div>
   <div class="links"><a href="formularios.html">Formulários</a><a href="privacidade.html">Política de privacidade</a><a href="quem-somos.html">Quem somos</a><a href="contato.html">Contato</a></div>
 </div></footer>
 

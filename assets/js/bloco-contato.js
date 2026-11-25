@@ -83,7 +83,14 @@
       /* Guarda: campo escondido que pessoa nenhuma ve e robo preenche. Preenchido,
          o envio e recusado em silencio - nenhum pedido sai e nada e gravado. Vazio,
          nao atrapalha envio nenhum. */
-      if (guarda && guarda.value) { return; }
+      if (guarda && guarda.value) {
+        /* Armadilha de robô: preenchida, nada sai e nada se grava. Responde a mesma
+           frase do envio aceito, como o recebedor faz, em vez de ficar muda. */
+        dizer(texto(f, "msg-ok"), true);
+        f.reset();
+        repor();
+        return;
+      }
       status.className = "bc-status";
       status.textContent = "";
       if (!validar()) {

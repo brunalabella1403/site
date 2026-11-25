@@ -107,6 +107,15 @@ li{margin:0 0 6px}
 .cta-calc p{margin:0 0 16px;font-size:15px;line-height:1.55;color:#C9DAEA}
 .cta-calc a{display:inline-block;background:var(--el-ouro);color:var(--el-marinho);font-family:var(--el-fonte-titulo);font-weight:700;text-decoration:none;padding:13px 20px;border-radius:9px}
 .cta-calc a:hover,.cta-calc a:focus{filter:brightness(.96)}
+
+/* 24/11/2026 (v8): em 320 px o link de volta ao site saia da tela. A barra tem 288 px
+   uteis (320 menos os 2x16 de recuo) e carregava icone 40 + 12 + marca ~110 + 12 +
+   link ~156 = ~330: sobravam ~42 px fora da tela, e aquele link e a unica saida desta
+   pagina. Abaixo de 420 px ele desce para uma linha propria, inteiro e clicavel. */
+@media (max-width:420px){
+  .topo{flex-wrap:wrap}
+  .topo .voltar-site{margin-left:0;white-space:normal;flex-basis:100%;padding-top:4px}
+}
 </style>
 </head>
 <body>

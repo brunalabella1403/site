@@ -86,11 +86,45 @@
       e.preventDefault();
       var a = document.getElementById("frase-atividade").value;
       var o = document.getElementById("frase-objetivo").value;
-      var q = new URLSearchParams({ atividade: a, objetivo: o });
+      var q = new URLSearchParams({ atividade: a, objetivo: o, origem: "capa" });
       var u = utms();
       Object.keys(u).forEach(function (k) { q.set(k, u[k]); });
       location.href = "contato.html?" + q.toString() + "#formulario";
     });
+  }
+
+
+  /* 24/11/2026 (v8) — DE ONDE A PESSOA VEIO e POR ONDE ELA ENTROU.
+     Defeito medido na revisão da versão de teste: pagina_origem guardava o caminho do
+     referenciador, qualquer que fosse. Quem chegava do Google e preenchia o formulário
+     gravava "/" — o caminho do Google —, a página do site em que a pessoa clicou não ia
+     para lugar nenhum, e a primeira página da visita também não. Agora são três campos:
+     a origem do pedido, a página de onde ela clicou e a página em que a visita começou. */
+  var CHAVE_ENTRADA = "elpee_entrada";
+  function paginaDeEntrada() {
+    var atual = location.pathname;
+    try {
+      var guardada = sessionStorage.getItem(CHAVE_ENTRADA);
+      if (guardada) { return guardada; }
+      sessionStorage.setItem(CHAVE_ENTRADA, atual);
+    } catch (e) { /* sem sessionStorage: vale a página atual */ }
+    return atual;
+  }
+  paginaDeEntrada();  /* grava a primeira página da visita, em TODA página do site */
+  function deOndeVeio() {
+    if (!document.referrer) { return "direto"; }
+    try {
+      var u = new URL(document.referrer);
+      if (u.host === location.host) { return u.pathname; }
+      return "fora: " + u.host;
+    } catch (e) { return "direto"; }
+  }
+  function origemDoPedido() {
+    var q = new URLSearchParams(location.search).get("origem");
+    if (q) { return q.slice(0, 120); }
+    var ent = paginaDeEntrada();
+    if (ent === "/" || ent === "/index.html") { return "capa"; }
+    return "site: " + ent;
   }
 
   /* Formulário de contato. */
@@ -105,8 +139,13 @@
       sel.value = v.slice(0, 80);
     });
     var u0 = utms();
-    UTMS.forEach(function (k) { if (f.elements[k]) f.elements[k].value = u0[k] || ""; });
-    if (f.elements.pagina_origem) f.elements.pagina_origem.value = document.referrer ? new URL(document.referrer).pathname : "direto";
+    function reporOcultos() {
+      UTMS.forEach(function (k) { if (f.elements[k]) { f.elements[k].value = u0[k] || ""; } });
+      if (f.elements.pagina_origem) { f.elements.pagina_origem.value = deOndeVeio(); }
+      if (f.elements.pagina_entrada) { f.elements.pagina_entrada.value = paginaDeEntrada(); }
+      if (f.elements.origem) { f.elements.origem.value = origemDoPedido(); }
+    }
+    reporOcultos();
 
     var status = document.getElementById("form-status");
     function marcar(campo, ruim) { var b = campo.closest(".campo"); if (b) b.classList.toggle("invalido", ruim); }
@@ -123,13 +162,23 @@
     f.addEventListener("submit", function (e) {
       e.preventDefault();
       status.textContent = "";
-      if (f.elements.empresa_site.value) return; /* armadilha de robô */
+      if (f.elements.empresa_site.value) {
+        /* Armadilha de robô. Preenchida, nada sai e nada se grava. Responde a mesma
+           frase do envio aceito — que é o que o recebedor já faz do lado do servidor —
+           para o robô não aprender o que falhou. Antes disto a página ficava muda:
+           nenhuma mensagem, nenhum pedido, o formulário cheio. Quem chegasse aqui por
+           preenchimento automático do navegador ficava olhando uma tela sem resposta. */
+        status.textContent = "Recebemos a sua mensagem. Respondemos em até 1 dia útil.";
+        f.reset();
+        reporOcultos();
+        return;
+      }
       if (!validar()) { status.textContent = "Confira os campos destacados."; var p = f.querySelector(".invalido input,.invalido select,.invalido textarea"); if (p) p.focus(); return; }
       var d = {};
       Array.prototype.forEach.call(f.elements, function (c) { if (c.name && c.name !== "empresa_site" && c.type !== "checkbox") d[c.name] = c.value; });
       d.aceite_politica = "sim";
       d.enviado_em = new Date().toISOString();
-      var qOrigem = qs.get("origem"); if (qOrigem) { d.origem = qOrigem.slice(0, 120); }
+      /* a origem vem do campo escondido, enchido por reporOcultos() */
       if (C.form_endpoint) {
         var corpo = new URLSearchParams(d);
         var botao = f.querySelector("button[type=submit]");
@@ -144,8 +193,7 @@
               /* O reset limpa também os campos escondidos de origem. Sem
                  estas duas linhas, um segundo envio feito da mesma página
                  chegaria sem a origem e sem a página de onde a pessoa veio. */
-              UTMS.forEach(function (k) { if (f.elements[k]) { f.elements[k].value = u0[k] || ""; } });
-              if (f.elements.pagina_origem) { f.elements.pagina_origem.value = document.referrer ? new URL(document.referrer).pathname : "direto"; }
+              reporOcultos();
               evento("generate_lead", { origem: "formulario" });
             } else {
               /* O recebedor manda o texto já pronto para a tela, em
